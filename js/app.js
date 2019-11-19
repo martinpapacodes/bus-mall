@@ -30,18 +30,14 @@ Product.arrayImg.push(new Product('Wine Glass', 'img/wine-glass.jpg'));
 
 
 Product.prototype.getThreeRandomImg = function() {
-    
-    // for(var i = 0; i < Product.arrayImg.length; i++) {
+    var arr = [];
+    for(var i = 0; i < Product.arrayImg.length; i++) {
         var imgOne = Product.arrayImg[Math.floor(Product.arrayImg.length * Math.random())];
         var imgTwo = Product.arrayImg[Math.floor(Product.arrayImg.length * Math.random())];
         var imgThree = Product.arrayImg[Math.floor(Product.arrayImg.length * Math.random())];
-    // }
+    }
 
         console.log(imgOne, imgTwo, imgThree);
-
-    
-   
-
 }
 
 Product.prototype.getThreeRandomImg();
