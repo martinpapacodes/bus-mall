@@ -1,4 +1,6 @@
 "use strict";
+//Global functions
+var productImages = document.getElementById('productImages');
 
 function Product(name, imgUrl) {
     this.name = name;
@@ -28,16 +30,41 @@ Product.arrayImg.push(new Product('Water Can', 'img/water-can.jpg'));
 Product.arrayImg.push(new Product('Wine Glass', 'img/wine-glass.jpg'));
 // Product.arrayImg = ['bag.jpg', 'banana.jpg', 'bathroom.jpg', 'boots.jpg', 'breakfast.jpg', 'bubblegum.jpg', 'chair.jpg', 'cthulhu.jpg', 'dog-duck.jpg', 'dragon.jpg', 'pen.jpg', 'pet-sweep.jpg', 'scissors.jpg', 'shark.jpg', 'sweep.png', 'tauntaun.jpg', 'unicorn.jpg', 'usb.gif', 'water-can.jpg', 'wine-glass.jpg'];
 
-
 Product.prototype.getThreeRandomImg = function() {
-    var arr = [];
-    for(var i = 0; i < Product.arrayImg.length; i++) {
-        var imgOne = Product.arrayImg[Math.floor(Product.arrayImg.length * Math.random())];
-        var imgTwo = Product.arrayImg[Math.floor(Product.arrayImg.length * Math.random())];
-        var imgThree = Product.arrayImg[Math.floor(Product.arrayImg.length * Math.random())];
+    var arrThreeImg = [];
+    var areDuplicates = false;
+    for(var i = 0; i < 3; i++) {
+        arrThreeImg.push(Product.arrayImg[Math.floor(Product.arrayImg.length * Math.random())]);
+       
+        // var imgOne = Product.arrayImg[Math.floor(Product.arrayImg.length * Math.random())];
+        // var imgTwo = Product.arrayImg[Math.floor(Product.arrayImg.length * Math.random())];
+        // var imgThree = Product.arrayImg[Math.floor(Product.arrayImg.length * Math.random())];
     }
 
-        console.log(imgOne, imgTwo, imgThree);
+    arrThreeImg.map(function(product){
+        return product.name;
+    }).forEach(function(element,  index, arr){
+        if(arr.indexOf(element) !== index) {
+            areDuplicates = true;
+            if(areDuplicates) {
+                Product.prototype.getThreeRandomImg();
+            }
+            
+        }
+    });
+       return arrThreeImg;
 }
 
-Product.prototype.getThreeRandomImg();
+var firstProductImg = document.getElementById('firstProductImg');
+var secondProductImg = document.getElementById('secondProductImg');
+var thirdProductImg = document.getElementById('thirdProductImg');
+
+firstProductImg.setAttribute('src', Product.prototype.getThreeRandomImg()[0].imgUrl);
+secondProductImg.setAttribute('src', Product.prototype.getThreeRandomImg()[1].imgUrl);
+thirdProductImg.setAttribute('src', Product.prototype.getThreeRandomImg()[2].imgUrl);
+
+
+// for(var i = 0; i < Product.prototype.getThreeRandomImg().length; i++){
+    
+//     li.textContent = Product.prototype.getThreeRandomImg()[i].imgUrl;
+// }
