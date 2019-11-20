@@ -1,10 +1,15 @@
 "use strict";
 //Global functions
-var productImages = document.getElementById('productImages');
+var productImgs = document.getElementById('productImages');
+var firstProductImg = document.getElementById('firstProductImg');
+var secondProductImg = document.getElementById('secondProductImg');
+var thirdroductImg = document.getElementById('thirdroductImg');
 
 function Product(name, imgUrl) {
     this.name = name;
     this.imgUrl = imgUrl;
+    this.click = 0;
+    this.numOfTimesShown = 0;
 }
 Product.arrayImg = [];
 
