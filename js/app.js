@@ -1,5 +1,8 @@
 "use strict";
 //Global functions
+
+var maxNumOfClicks = 12;
+
 var productImages = document.getElementById('productImages');
 
 var firstProductImg = document.getElementById('firstProductImg');
@@ -77,11 +80,60 @@ function displayProductImgs(firstImg, secondImg, thirdImg) {
     thirdProductLbl.textContent = Product.arrayImages[thirdImg].name;
 }
 
+    var firstProduct;
+    var secondProduct;
+    var thirdProduct;
+
 function getThreeRandomImg() {
-    var firstProductImg = Math.floor(Product.arrayImages.length * Math.random());
-    var secondProductImg = Math.floor(Product.arrayImages.length * Math.random());
-}
-// for(var i = 0; i < Product.prototype.getThreeRandomImg().length; i++){
     
-//     li.textContent = Product.prototype.getThreeRandomImg()[i].imgUrl;
-// }
+
+    var firstImg = Math.floor(Product.arrayImages.length * Math.random());
+    var secondImg = Math.floor(Product.arrayImages.length * Math.random());
+
+    do {
+        var thirdImg = Math.floor(Product.arrayImages.length * Math.random());
+    } while (firstImg === secondImg === thirdImg);
+
+    firstProduct = Product.arrayImages[firstImg]
+    secondProduct = Product.arrayImages[secondImg]
+    thirdProduct = Product.arrayImages[thirdImg]
+
+    displayProductImgs(firstImg, secondImg, thirdImg);
+};
+
+var totalNumOfClicks = 0;
+
+function clickHandler(e) {
+    
+    
+    if(totalNumOfClicks < maxNumOfClicks) {
+
+        if(e.target.id === 'firstProductImg' || e.target.id === 'secondProductImg' || e.target.id === 'thirdProductImg') {
+            if(e.target.id === 'firstProductImg') {
+                firstProduct.numOfClicks++;
+            } else if (e.target.id === 'secondProductImg') {
+                secondProduct.numOfClicks++;
+            } else if (e.targe.id === 'thirdProductImg') {
+                thirdProduct.numOfClicks++;
+            }
+
+            firstProduct.numOfTimesShown++;
+            secondProduct.numOfTimesShown++;
+            thirdProduct.numOfTimesShown++;
+
+            getThreeRandomImg();
+        }
+    }
+
+    totalNumOfClicks++;
+    
+    if(totalNumOfClicks === maxNumOfClicks){
+        productImages.removeEventListener('click', clickHandler);
+        alert('You have reached the maximum number amount of clicks!');
+    }
+}
+
+productImages.addEventListener('click', clickHandler);
+
+getThreeRandomImg();
+
