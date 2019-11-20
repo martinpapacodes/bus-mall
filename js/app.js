@@ -1,15 +1,24 @@
 "use strict";
 //Global functions
-var productImages = document.getElementById('productImages');
+var productImagesg = document.getElementById('productImages');
 
 var firstProductImg = document.getElementById('firstProductImg');
 var secondProductImg = document.getElementById('secondProductImg');
-var thirdProductImg = document.getElementById('thirdProductImg')
+var thirdProductImg = document.getElementById('thirdProductImg');
+
+var firstProductLbl = document.getElementById('firstProductLbl');
+var secondProductLbl = document.getElementById('secondProductLbl');
+var thirdProductLbl = document.getElementById('thirdProductLbl');
+
+
 function Product(name, imgUrl) {
     this.name = name;
     this.imgUrl = imgUrl;
+    this.numOfClicks = 0;
+    this.numOfTimesShown = 0;
 }
-Product.arrayImg = [];
+
+Product.arrayImgs = [];
 
 Product.arrayImg.push(new Product('Bag', 'img/bag.jpg'));
 Product.arrayImg.push(new Product('Banana', 'img/banana.jpg'));
