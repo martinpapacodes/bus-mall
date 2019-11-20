@@ -2,6 +2,9 @@
 //Global functions
 var productImages = document.getElementById('productImages');
 
+var firstProductImg = document.getElementById('firstProductImg');
+var secondProductImg = document.getElementById('secondProductImg');
+var thirdProductImg = document.getElementById('thirdProductImg')
 function Product(name, imgUrl) {
     this.name = name;
     this.imgUrl = imgUrl;
@@ -54,10 +57,7 @@ Product.prototype.getThreeRandomImg = function() {
     });
        return arrThreeImg;
 }
-
-var firstProductImg = document.getElementById('firstProductImg');
-var secondProductImg = document.getElementById('secondProductImg');
-var thirdProductImg = document.getElementById('thirdProductImg');
+;
 
 firstProductImg.setAttribute('src', Product.prototype.getThreeRandomImg()[0].imgUrl);
 secondProductImg.setAttribute('src', Product.prototype.getThreeRandomImg()[1].imgUrl);
