@@ -1,5 +1,32 @@
-img {
+#busLogo {
+    height: 150px;
+}
+header h2 {
+    font-family: 'Righteous', cursive;  
+    font-size: 4.5em;
+    margin-top: -120px;
+    margin-left: 110px;
+}
+section ul {
+    margin-top: 60px;
+    border: solid black;;
+    float:left;
+    width: 300px;
+    height: 700px;
+}
+main img {
     max-height: 300px;
     max-width: 300px;
     margin: 0 auto;
+}
+
+div h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+#productImages div {
+    text-align: center;
+    float: left;
+    margin: 100px 70px;
 }
